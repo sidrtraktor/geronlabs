@@ -1,62 +1,16 @@
-<!DOCTYPE html>
-<html lang="ru">
+<!doctype html>
+<html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Geron Labs | AI Automation</title>
-    <link rel="icon" type="image/png" href="favicon.svg">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        :root { --bg: #ffffff; --text: #1a1a1a; --accent: #0070f3; }
-        body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; overflow: hidden; }
-       .container { text-align: center; max-width: 600px; padding: 20px; animation: fadeIn 1.5s ease-out; }
-       .logo { width: 100%; max-width: 450px; height: auto; margin-bottom: 30px; filter: drop-shadow(0 10px 30px rgba(0,0,0,0.05)); }
-        h1 { font-weight: 600; font-size: 1.5rem; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 10px; }
-        p { font-weight: 300; font-size: 1.1rem; color: #666; margin-bottom: 40px; }
-       .cta-form { display: flex; gap: 10px; justify-content: center; }
-        input { padding: 12px 20px; border: 1px solid #eaeaea; border-radius: 8px; width: 250px; outline: none; transition: 0.3s; }
-        input:focus { border-color: var(--accent); }
-        button { padding: 12px 24px; background: var(--text); color: #fff; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; transition: 0.3s; }
-        button:hover { background: var(--accent); transform: translateY(-2px); }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-    </style>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>geron-labs-web</title>
 </head>
+
 <body>
-    <div class="container">
-        <img src="logo.png" alt="Geron Labs Logo" class="logo">
-        <h1>Geron Labs</h1>
-        <p>Вдохновлённые механическими изобретениями Герона, где один импульс запускал целую систему, мы в Geron Labs строим автоматизацию для бизнеса: точные конструкции, которые снимают операционную нагрузку, ускоряют решения и открывают путь к масштабированию.</p>
-        <p>Скоро запуск.</p>
-        
-        <div class="cta-form">
-            <input type="email" id="emailInput" placeholder="Ваш e-mail" required>
-            <button onclick="sendFeedback()">Узнать первым</button>
-        </div>
-    </div>
-
-    <script>
-        async function sendFeedback() {
-            const email = document.getElementById('emailInput').value;
-            if (!email) { alert('Пожалуйста, введите email'); return; }
-
-            try {
-                const response = await fetch('/api/send-message', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email: email })
-                });
-
-                if (response.ok) {
-                    alert('Спасибо! Мы получили вашу заявку.');
-                    document.getElementById('emailInput').value = '';
-                } else {
-                    alert('Ошибка при отправке. Попробуйте позже.');
-                }
-            } catch (err) {
-                console.error(err);
-                alert('Произошла ошибка.');
-            }
-        }
-    </script>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
 </body>
+
 </html>
