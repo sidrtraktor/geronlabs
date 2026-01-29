@@ -25,15 +25,38 @@
     <div class="container">
         <img src="logo.png" alt="Geron Labs Logo" class="logo">
         <h1>Geron Labs</h1>
-        <p>Вдохновлённые механическими изобретениями Герона, где один импульс запускал целую систему, 
-            мы в Geron Labs строим автоматизацию для бизнеса: точные конструкции, которые снимают операционную нагрузку, 
-            ускоряют решения и открывают путь к масштабированию. </p>
-           </p> Скоро запуск.</p>
+        <p>Вдохновлённые механическими изобретениями Герона, где один импульс запускал целую систему, мы в Geron Labs строим автоматизацию для бизнеса: точные конструкции, которые снимают операционную нагрузку, ускоряют решения и открывают путь к масштабированию.</p>
+        <p>Скоро запуск.</p>
         
         <div class="cta-form">
-            <input type="email" placeholder="Ваш e-mail">
-            <button onclick="alert('Спасибо! Мы сообщим о запуске.')">Узнать первым</button>
+            <input type="email" id="emailInput" placeholder="Ваш e-mail" required>
+            <button onclick="sendFeedback()">Узнать первым</button>
         </div>
     </div>
+
+    <script>
+        async function sendFeedback() {
+            const email = document.getElementById('emailInput').value;
+            if (!email) { alert('Пожалуйста, введите email'); return; }
+
+            try {
+                const response = await fetch('/api/send-message', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email: email })
+                });
+
+                if (response.ok) {
+                    alert('Спасибо! Мы получили вашу заявку.');
+                    document.getElementById('emailInput').value = '';
+                } else {
+                    alert('Ошибка при отправке. Попробуйте позже.');
+                }
+            } catch (err) {
+                console.error(err);
+                alert('Произошла ошибка.');
+            }
+        }
+    </script>
 </body>
 </html>
