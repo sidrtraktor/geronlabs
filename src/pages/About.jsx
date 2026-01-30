@@ -8,7 +8,7 @@ import CoinMachine from '../assets/coin_machine_sketch.jpg';
 import TempleColored from '../assets/temple_colored.jpg';
 import HeronPortrait from '../assets/heron_portrait.jpg';
 
-const TechnicalSpec = ({ title, id, mechanics, significance, quote, image, position, delay, customSize }) => (
+const TechnicalSpec = ({ title, id, mechanics, significance, quote, image, position, delay, customSize, imagePadding }) => (
     <motion.div
         className={`absolute ${position} ${customSize || 'w-32 md:w-36 lg:w-48 xl:w-64'} flex flex-col gap-2 pointer-events-none md:pointer-events-auto z-10`}
         initial={{ opacity: 0 }}
@@ -16,7 +16,7 @@ const TechnicalSpec = ({ title, id, mechanics, significance, quote, image, posit
         transition={{ delay: delay, duration: 1 }}
     >
         {/* Image - Blended directly onto grid */}
-        <div className="relative w-full aspect-square overflow-visible">
+        <div className={`relative w-full aspect-square overflow-visible ${imagePadding || ''}`}>
             <img
                 src={image}
                 alt={title}
@@ -146,7 +146,8 @@ const About = () => {
                 mechanics="Нейросетевая реконструкция облика."
                 significance="Автор трактатов «Пневматика» и «Механика»."
                 delay={1.6}
-                customSize="w-24 md:w-28 lg:w-36 xl:w-48"
+                customSize="w-40 md:w-48 lg:w-56 xl:w-64"
+                imagePadding="p-4 md:p-6"
             />
 
             <Footer />
