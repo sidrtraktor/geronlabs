@@ -10,7 +10,7 @@ import HeronPortrait from '../assets/heron_portrait.jpg';
 
 const TechnicalSpec = ({ title, id, mechanics, significance, quote, image, position, delay }) => (
     <motion.div
-        className={`absolute ${position} w-64 md:w-80 flex flex-col gap-2 pointer-events-none md:pointer-events-auto z-10`}
+        className={`absolute ${position} w-64 md:w-48 lg:w-64 xl:w-80 flex flex-col gap-2 pointer-events-none md:pointer-events-auto z-10`}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: delay, duration: 1 }}
@@ -106,7 +106,7 @@ const About = () => {
 
             {/* 1. Top Left: Aeolipile */}
             <TechnicalSpec
-                position="hidden md:flex top-12 left-12"
+                position="hidden md:flex top-4 left-4 lg:top-8 lg:left-8 xl:top-12 xl:left-12"
                 title="ЭОЛИПИЛ"
                 id="OBJ-01"
                 image={Aeolipile}
@@ -117,7 +117,7 @@ const About = () => {
 
             {/* 2. Top Right: Temple Doors */}
             <TechnicalSpec
-                position="hidden md:flex top-12 right-12"
+                position="hidden md:flex top-4 right-4 lg:top-8 lg:right-8 xl:top-12 xl:right-12"
                 title="«УМНЫЙ ДОМ»"
                 id="OBJ-03"
                 image={TempleColored}
@@ -128,7 +128,7 @@ const About = () => {
 
             {/* 3. Bottom Right: Vending Machine */}
             <TechnicalSpec
-                position="hidden md:flex bottom-24 right-12"
+                position="hidden md:flex bottom-16 right-4 lg:bottom-20 lg:right-8 xl:bottom-24 xl:right-12"
                 title="ПЕРВЫЙ ВЕНДИНГ"
                 id="OBJ-02"
                 image={CoinMachine}
@@ -139,7 +139,7 @@ const About = () => {
 
             {/* 4. Bottom Left: Heron Portrait */}
             <TechnicalSpec
-                position="hidden md:flex bottom-24 left-12"
+                position="hidden md:flex bottom-16 left-4 lg:bottom-20 lg:left-8 xl:bottom-24 xl:left-12"
                 title="ГЕРОН (HERON-GAN)"
                 id="ARCHITECT"
                 image={HeronPortrait}
