@@ -8,9 +8,9 @@ import CoinMachine from '../assets/coin_machine_sketch.jpg';
 import TempleColored from '../assets/temple_colored.jpg';
 import HeronPortrait from '../assets/heron_portrait.jpg';
 
-const TechnicalSpec = ({ title, id, mechanics, significance, quote, image, position, delay }) => (
+const TechnicalSpec = ({ title, id, mechanics, significance, quote, image, position, delay, customSize }) => (
     <motion.div
-        className={`absolute ${position} w-32 md:w-36 lg:w-48 xl:w-64 flex flex-col gap-2 pointer-events-none md:pointer-events-auto z-10`}
+        className={`absolute ${position} ${customSize || 'w-32 md:w-36 lg:w-48 xl:w-64'} flex flex-col gap-2 pointer-events-none md:pointer-events-auto z-10`}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: delay, duration: 1 }}
@@ -146,6 +146,7 @@ const About = () => {
                 mechanics="Нейросетевая реконструкция облика."
                 significance="Автор трактатов «Пневматика» и «Механика»."
                 delay={1.6}
+                customSize="w-24 md:w-28 lg:w-36 xl:w-48"
             />
 
             <Footer />
