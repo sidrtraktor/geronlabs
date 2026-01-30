@@ -10,7 +10,7 @@ import HeronPortrait from '../assets/heron_portrait.jpg';
 
 const TechnicalSpec = ({ title, id, mechanics, significance, quote, image, position, delay, customSize, imagePadding }) => (
     <motion.div
-        className={`absolute ${position} ${customSize || 'w-32 md:w-36 lg:w-48 xl:w-64'} flex flex-col gap-2 pointer-events-none md:pointer-events-auto z-10`}
+        className={`absolute ${position} ${customSize || 'w-28 md:w-32 lg:w-40 xl:w-56'} flex flex-col gap-2 pointer-events-none md:pointer-events-auto z-10`}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: delay, duration: 1 }}
@@ -106,7 +106,7 @@ const About = () => {
 
             {/* 1. Top Left: Aeolipile */}
             <TechnicalSpec
-                position="hidden md:flex top-2 left-2 lg:top-8 lg:left-8 xl:top-12 xl:left-12"
+                position="hidden md:flex top-1 left-1 lg:top-4 lg:left-4 xl:top-8 xl:left-8"
                 title="ЭОЛИПИЛ"
                 id="OBJ-01"
                 image={Aeolipile}
@@ -117,7 +117,7 @@ const About = () => {
 
             {/* 2. Top Right: Temple Doors */}
             <TechnicalSpec
-                position="hidden md:flex top-2 right-2 lg:top-8 lg:right-8 xl:top-12 xl:right-12"
+                position="hidden md:flex top-1 right-1 lg:top-4 lg:right-4 xl:top-8 xl:right-8"
                 title="«УМНЫЙ ДОМ»"
                 id="OBJ-03"
                 image={TempleColored}
