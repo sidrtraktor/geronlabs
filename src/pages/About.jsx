@@ -128,7 +128,7 @@ const About = () => {
 
             {/* 3. Bottom Right: Vending Machine */}
             <TechnicalSpec
-                position="hidden md:flex bottom-16 right-2 lg:bottom-16 lg:right-8 xl:bottom-24 xl:right-12"
+                position="hidden md:flex bottom-4 right-2 lg:bottom-8 lg:right-8 xl:bottom-12 xl:right-12"
                 title="ПЕРВЫЙ ВЕНДИНГ"
                 id="OBJ-02"
                 image={CoinMachine}
@@ -139,7 +139,7 @@ const About = () => {
 
             {/* 4. Bottom Left: Heron Portrait */}
             <TechnicalSpec
-                position="hidden md:flex bottom-16 left-2 lg:bottom-16 lg:left-8 xl:bottom-24 xl:left-12"
+                position="hidden md:flex bottom-4 left-2 lg:bottom-8 lg:left-8 xl:bottom-12 xl:left-12"
                 title="ГЕРОН (HERON-GAN)"
                 id="ARCHITECT"
                 image={HeronPortrait}
