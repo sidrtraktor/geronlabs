@@ -1,25 +1,64 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@theme {
+  --color-geron-white: #FFFFFF;
+  --color-geron-grey-light: #F5F5F7;
+  --color-geron-grey-dark: #1A1A1A;
+  --color-geron-grey-mid: #666666;
+  --color-geron-cyan: #00FFFF;
+  --color-geron-orange: #FF8C00;
+
+  --font-sans: "Inter", "Helvetica", "Arial", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+}
 
 @layer base {
   body {
     @apply bg-geron-white text-geron-grey-dark font-sans antialiased;
-    /* Optional: noise texture or subtle grid could go here */
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-bold tracking-tight;
+  }
+
+  /* CUSTOM SCROLLBAR for Engineering Look */
+  /* Target all scrollbars */
+  ::-webkit-scrollbar {
+    width: 8px;
+    /* Vertical width */
+    height: 10px;
+    /* Horizontal height - slightly thicker for usability */
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #e5e5e5;
+    border-radius: 0px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #1A1A1A;
+    /* Geron Grey Dark */
+    border-radius: 0px;
+    /* Square/Tech look */
+    border: 2px solid #e5e5e5;
+    /* Padding around thumb */
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #000000;
   }
 }
 
 @layer utilities {
-  .font-mono {
-    font-family: 'JetBrains Mono', monospace;
-  }
-  
+
   /* Glassmorphism utility */
   .glass-panel {
     @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-glass;
@@ -28,5 +67,17 @@
   /* Thin descriptive lines */
   .line-connector {
     @apply border-t border-geron-grey-dark/30;
+  }
+
+  /* Force Scrollbar Visibility */
+  .scrollbar-visible-always {
+    -ms-overflow-style: auto;
+    /* IE and Edge */
+    scrollbar-width: auto;
+    /* Firefox */
+  }
+
+  .scrollbar-visible-always::-webkit-scrollbar {
+    display: block;
   }
 }

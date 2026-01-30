@@ -1,68 +1,116 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Mail, Send, Github } from 'lucide-react';
-import { GlassCard } from '../components/ui/GlassCard';
+import { ArrowLeft } from 'lucide-react';
+import OrderCTA from '../components/OrderCTA';
+import Footer from '../components/Footer';
+
+// Import Social Icons from assets
+import TelegramIcon from '../assets/telegram.png';
+import LinkedInIcon from '../assets/linkedIN.png';
+import InstagramIcon from '../assets/instagram.png';
+import EmailIcon from '../assets/email.png';
+
+const SOCIAL_LINKS = [
+    {
+        id: 'tg',
+        icon: TelegramIcon,
+        label: '[TELEGRAM]',
+        link: 'https://t.me/Geronlabs_bot?start',
+        color: 'shadow-cyan-500/50'
+    },
+    {
+        id: 'li',
+        icon: LinkedInIcon,
+        label: '[LINKED_IN]',
+        link: 'https://www.linkedin.com/company/geron-labs',
+        color: 'shadow-blue-500/50'
+    },
+    {
+        id: 'em',
+        icon: EmailIcon,
+        label: '[EMAIL]',
+        link: 'mailto:contacts@geronlabs.xyz',
+        color: 'shadow-orange-500/50'
+    },
+    {
+        id: 'in',
+        icon: InstagramIcon,
+        label: '[INSTAGRAM]',
+        link: 'https://www.instagram.com/geron_labs',
+        color: 'shadow-purple-500/50'
+    }
+];
 
 const Contact = () => {
     return (
-        <div className="h-screen w-full bg-geron-white relative flex items-center justify-center p-4">
+        <div className="h-screen w-full bg-white relative flex flex-col items-center justify-center p-4 overflow-hidden">
 
-            {/* Background elements */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute top-[-10%] left-[-10%] w-[50vh] h-[50vh] bg-geron-cyan/5 rounded-full blur-[100px]" />
-                <div className="absolute bottom-[-10%] right-[-10%] w-[50vh] h-[50vh] bg-geron-orange/5 rounded-full blur-[100px]" />
-            </div>
+            {/* 1. Global Engineering Grid Background */}
+            <div className="absolute inset-0 pointer-events-none opacity-[0.03]"
+                style={{ backgroundImage: 'linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)', backgroundSize: '40px 40px' }}
+            />
 
-            <Link to="/" className="absolute top-8 left-8 flex items-center gap-2 text-geron-grey-dark hover:text-geron-cyan transition-colors font-mono text-xs uppercase tracking-widest border border-geron-grey-dark/20 px-4 py-2 bg-white/50 backdrop-blur">
-                <ArrowLeft size={14} /> System Root
+            {/* 2. Navigation: Return to Base */}
+            <Link to="/" className="absolute top-8 left-8 flex items-center gap-2 text-geron-grey-dark hover:text-geron-cyan transition-colors font-mono text-xs uppercase tracking-widest z-50">
+                <ArrowLeft size={14} /> // Return_to_Base
             </Link>
 
+            {/* 3. Main Content Container */}
             <motion.div
-                initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                transition={{ duration: 0.8, type: "spring" }}
-                className="w-full max-w-lg"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="relative z-10 flex flex-col items-center gap-12"
             >
-                <GlassCard className="text-center relative overflow-hidden">
-                    {/* Decorative Top Line */}
-                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-geron-cyan to-transparent opacity-50" />
+                {/* Header Text (Optional, keeping it clean as per specific request to focus on icons, but a title helps) */}
+                <div className="text-center space-y-2">
+                    <h1 className="text-4xl md:text-5xl font-bold font-sans text-geron-grey-dark">КОНТАКТНЫЙ УЗЕЛ</h1>
+                    <p className="font-mono text-xs text-geron-grey-mid uppercase tracking-[0.2em]">Выберите канал связи</p>
+                </div>
 
-                    <h1 className="text-3xl font-bold mb-2">Connect to Node</h1>
-                    <p className="text-geron-grey-mid font-mono text-xs uppercase tracking-widest mb-8">Establish Uplink</p>
+                {/* 4. Social Icons Row */}
+                <div className="flex flex-wrap justify-center gap-12 md:gap-20">
+                    {SOCIAL_LINKS.map((item, index) => (
+                        <motion.a
+                            key={item.id}
+                            href={item.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ delay: index * 0.1 }}
+                            whileHover={{ scale: 1.1, y: -5 }}
+                            className="group flex flex-col items-center gap-4 cursor-pointer"
+                        >
+                            {/* Icon Wrapper */}
+                            <div className="relative w-24 h-24 md:w-32 md:h-32 flex items-center justify-center">
+                                <img
+                                    src={item.icon}
+                                    alt={item.label}
+                                    className="w-full h-full object-contain mix-blend-multiply opacity-80 group-hover:opacity-100 transition-all duration-300"
+                                />
 
-                    <div className="space-y-6">
-                        <a href="mailto:hello@geronlabs.com" className="flex items-center gap-4 p-4 border border-geron-grey-dark/10 rounded-lg hover:border-geron-cyan hover:bg-geron-cyan/5 transition-all group">
-                            <div className="w-10 h-10 bg-geron-grey-dark text-white flex items-center justify-center rounded-full group-hover:scale-110 transition-transform">
-                                <Mail size={18} />
+                                {/* Wireframe Glow on Hover */}
+                                <div className={`absolute inset-0 rounded-full blur-xl opacity-0 group-hover:opacity-40 transition-opacity duration-300 ${item.color} mix-blend-multiply`} />
                             </div>
-                            <div className="text-left">
-                                <div className="text-xs font-mono text-geron-grey-mid uppercase">Email Frequency</div>
-                                <div className="font-bold text-geron-grey-dark">hello@geronlabs.com</div>
-                            </div>
-                        </a>
 
-                        <a href="#" className="flex items-center gap-4 p-4 border border-geron-grey-dark/10 rounded-lg hover:border-geron-cyan hover:bg-geron-cyan/5 transition-all group">
-                            <div className="w-10 h-10 bg-geron-grey-dark text-white flex items-center justify-center rounded-full group-hover:scale-110 transition-transform">
-                                <Send size={18} />
-                            </div>
-                            <div className="text-left">
-                                <div className="text-xs font-mono text-geron-grey-mid uppercase">Telegram Signal</div>
-                                <div className="font-bold text-geron-grey-dark">@geron_labs</div>
-                            </div>
-                        </a>
+                            {/* Label */}
+                            <span className="font-mono text-xs font-bold text-geron-grey-mid group-hover:text-geron-grey-dark transition-colors uppercase tracking-wider">
+                                {item.label}
+                            </span>
+                        </motion.a>
+                    ))}
+                </div>
 
-                        {/* Social Orb Row */}
-                        <div className="flex justify-center gap-4 pt-4">
-                            {[1, 2, 3].map((_, i) => (
-                                <div key={i} className="w-2 h-2 rounded-full bg-geron-grey-dark/20 animate-pulse" style={{ animationDelay: `${i * 0.2}s` }} />
-                            ))}
-                        </div>
-                    </div>
-                </GlassCard>
+                {/* 5. Order CTA Button */}
+                <div className="mt-8">
+                    <OrderCTA />
+                </div>
             </motion.div>
+            <Footer />
         </div>
-    )
-}
+    );
+};
 
 export default Contact;
