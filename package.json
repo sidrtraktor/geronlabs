@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "framer-motion": "^12.29.2",
+    "google-auth-library": "^10.5.0",
     "google-spreadsheet": "^5.0.2",
     "jwt-decode": "^4.0.0",
     "lucide-react": "^0.563.0",

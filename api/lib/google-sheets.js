@@ -21,12 +21,30 @@ export async function addToSheet(leadData) {
         const doc = new GoogleSpreadsheet(process.env.GOOGLE_SHEET_ID, serviceAccountAuth);
         await doc.loadInfo();
 
-        const sheet = doc.sheetsByIndex[0]; // Write to the first sheet
+        console.log('📊 Google Sheet loaded:', doc.title);
+        console.log('📑 Available sheets:', doc.sheetsByIndex.map(s => s.title).join(', '));
 
-        // Add headers if empty (optional safety)
-        if (sheet.rowCount === 0) {
-            await sheet.setHeaderRow(['Date', 'User ID', 'Name', 'Platform', 'Request', 'Status']);
+        // Find sheet named "ORDER" or create it
+        let sheet = doc.sheetsByTitle['ORDER'];
+        if (!sheet) {
+            console.log('⚠️ Sheet "ORDER" not found, creating...');
+            sheet = await doc.addSheet({ title: 'ORDER', headerValues: ['Date', 'User ID', 'Name', 'Platform', 'Request', 'Status'] });
         }
+
+        console.log('✅ Using sheet:', sheet.title);
+
+        // Установить заголовки (безопасно даже если они уже есть)
+        try {
+            console.log('📝 Setting headers...');
+            await sheet.setHeaderRow(['Date', 'User ID', 'Name', 'Platform', 'Request', 'Status']);
+            console.log('✅ Headers set');
+        } catch (headerError) {
+            console.log('⚠️ Headers already exist or error:', headerError.message);
+        }
+
+        // Теперь загружаем заголовки
+        await sheet.loadHeaderRow();
+        console.log('📋 Headers:', sheet.headerValues);
 
         const row = {
             Date: new Date().toISOString(),
@@ -38,9 +56,19 @@ export async function addToSheet(leadData) {
         };
 
         await sheet.addRow(row);
+        console.log('✅ Row added to ORDER:', row);
         return true;
     } catch (error) {
-        console.error('Google Sheet Error:', error);
+        console.error('❌ Google Sheet Error:', error.message);
+        console.error('📋 Error Details:', {
+            name: error.name,
+            code: error.code,
+            status: error.status,
+            message: error.message
+        });
+        if (error.response) {
+            console.error('🔍 API Response:', error.response.data);
+        }
         return false;
     }
 }
