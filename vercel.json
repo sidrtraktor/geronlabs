@@ -1,0 +1,32 @@
+{
+    "rewrites": [
+        {
+            "source": "/api/(.*)",
+            "destination": "/api/$1"
+        },
+        {
+            "source": "/tg-order",
+            "destination": "/index.html"
+        },
+        {
+            "source": "/cases",
+            "destination": "/index.html"
+        },
+        {
+            "source": "/solutions",
+            "destination": "/index.html"
+        },
+        {
+            "source": "/contact",
+            "destination": "/index.html"
+        },
+        {
+            "source": "/about",
+            "destination": "/index.html"
+        },
+        {
+            "source": "/(.*)",
+            "destination": "/index.html"
+        }
+    ]
+}
