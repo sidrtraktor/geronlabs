@@ -57,7 +57,6 @@ const ScrambleExitText = ({ text, isScrambling, className }) => {
 
 const StubPage = ({ onLaunch }) => {
     const [status, setStatus] = useState('idle'); // idle, initializing, scrambling, launching
-    const [inputValue, setInputValue] = useState('');
     const [buttonText, setButtonText] = useState('INITIALIZING...');
 
     const handleLaunch = () => {
@@ -155,25 +154,7 @@ const StubPage = ({ onLaunch }) => {
                             </div>
                         </motion.div>
 
-                        {/* Input Field - Digital Exit */}
-                        <div className="w-full relative group">
-                            <motion.div
-                                exit={{
-                                    opacity: 0,
-                                    x: [0, -20, 20, -100], // Jitter effect
-                                    filter: "blur(10px)",
-                                    transition: { duration: 0.8, times: [0, 0.2, 0.4, 1] }
-                                }}
-                            >
-                                <input
-                                    type="email"
-                                    placeholder="ENTER EMAIL FOR EARLY ACCESS"
-                                    value={inputValue}
-                                    onChange={(e) => setInputValue(e.target.value)}
-                                    className="w-full bg-gray-50 border border-gray-200 rounded-none py-3 px-4 text-center font-mono text-xs md:text-sm uppercase tracking-widest focus:outline-none focus:border-gray-400 transition-all placeholder:text-gray-300"
-                                />
-                            </motion.div>
-                        </div>
+
                     </motion.div>
                 )}
             </AnimatePresence>
