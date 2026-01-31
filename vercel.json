@@ -4,5 +4,18 @@
             "source": "/((?!api/|_next/|static/|favicon.ico|.*\\.).*)",
             "destination": "/index.html"
         }
-    ]
+    ],
+    "headers": [
+        {
+            "source": "/api/(.*)",
+            "headers": [
+                {
+                    "key": "Cache-Control",
+                    "value": "no-cache, no-store, must-revalidate"
+                }
+            ]
+        }
+    ],
+    "trailingSlash": false,
+    "cleanUrls": false
 }
