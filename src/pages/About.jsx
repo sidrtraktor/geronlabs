@@ -30,7 +30,7 @@ const TechnicalSpec = ({ title, id, mechanics, significance, quote, image, posit
 
         {/* Text Details - Clean, no card */}
         <div className="font-mono text-[10px] text-geron-grey-dark leading-tight pl-2 border-l border-geron-grey-dark/30">
-            <h3 className="font-bold text-xs uppercase tracking-widest text-geron-grey-dark mb-1">
+            <h3 className="font-bold text-[10px] md:text-xs uppercase tracking-widest text-geron-grey-dark mb-1">
                 [{id}] {title}
             </h3>
             <div className="grid grid-cols-[35px_1fr] gap-2 opacity-80">
@@ -66,13 +66,13 @@ const About = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8 }}
             >
-                <div className="text-xs font-mono text-geron-cyan mb-2 uppercase tracking-[0.3em] font-bold">Origins // v1.0</div>
-                <h1 className="text-3xl md:text-5xl font-bold text-geron-grey-dark mb-6 tracking-tight leading-none uppercase font-sans">
+                <div className="text-[10px] md:text-xs font-mono text-geron-cyan mb-2 uppercase tracking-[0.3em] font-bold">Origins // v1.0</div>
+                <h1 className="text-2xl md:text-3xl lg:text-5xl font-bold text-geron-grey-dark mb-6 tracking-tight leading-none uppercase font-sans">
                     ГЕРОН АЛЕКСАНДРИЙСКИЙ:<br />
                     ПЕРВЫЙ АРХИТЕКТОР <br /><span className="text-geron-grey-mid">АЛГОРИТМОВ</span>
                 </h1>
 
-                <div className="prose prose-sm text-geron-grey-dark/90 leading-relaxed font-sans text-justify">
+                <div className="prose prose-sm md:prose-base text-geron-grey-dark/90 leading-relaxed font-sans text-justify">
                     <p className="mb-4">
                         В I веке н.э. Александрия была «Кремниевой долиной» античного мира, а Герон — её главным инженером.
                         Пока другие видели в механике магию, он видел <span className="font-bold border-b border-geron-grey-dark/20">программируемую логику</span>.

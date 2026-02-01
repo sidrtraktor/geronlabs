@@ -45,7 +45,7 @@ export default async function handler(req, res) {
                     // Call OpenAI with timeout protection
                     console.log('🤖 Calling OpenAI...');
                     const aiResponse = await Promise.race([
-                        getOpenAIResponse(null, text, async (toolName, toolArgs) => {
+                        getOpenAIResponse(user.id, text, async (toolName, toolArgs) => {
                             if (toolName === 'record_lead') {
                                 console.log('📝 Recording lead:', toolArgs);
                                 try {
@@ -63,7 +63,7 @@ export default async function handler(req, res) {
                             }
                         }),
                         new Promise((_, reject) =>
-                            setTimeout(() => reject(new Error('OpenAI timeout (25s)')), 25000)
+                            setTimeout(() => reject(new Error('OpenAI timeout (60s)')), 60000)
                         )
                     ]);
 

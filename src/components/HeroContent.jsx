@@ -103,14 +103,14 @@ const NavLabel = ({ label, labelRu, number, to, align = 'left', isMobile, isHove
     return (
         <Link
             to={to}
-            className={`group flex flex-col ${align === 'right' ? 'items-end text-right' : 'items-start text-left'} ${isMobile ? 'items-center text-center w-full py-4 border-b border-gray-100 last:border-0' : ''}`}
+            className={`group flex ${isMobile ? 'flex-row items-center gap-2 w-full py-2.5 border-b border-gray-100 last:border-0' : 'flex-col'} ${align === 'right' ? 'items-end text-right' : 'items-start text-left'}`}
             onMouseEnter={onHover}
             onMouseLeave={onLeave}
         >
-            <span className="font-mono text-[10px] text-gray-400 mb-1 tracking-widest opacity-60">
+            <span className={`font-mono text-gray-400 tracking-widest opacity-60 ${isMobile ? 'text-[8px]' : 'text-[10px] mb-1'}`}>
                 [{number}]
             </span>
-            <span className="text-sm md:text-lg font-bold uppercase tracking-[0.2em] text-gray-800 group-hover:text-cyan-600 transition-colors bg-white/80 backdrop-blur-sm px-1 leading-none py-1">
+            <span className={`font-bold uppercase text-gray-800 group-hover:text-cyan-600 transition-colors bg-white/90 backdrop-blur-md rounded leading-tight ${isMobile ? 'text-[11px] tracking-[0.1em] px-1.5 py-1' : 'text-xs md:text-base tracking-[0.15em] md:tracking-[0.2em] px-2 py-1.5'}`}>
                 <CipherText text={label} targetText={targetText} isHovered={isHovered} />
             </span>
         </Link>
@@ -122,7 +122,11 @@ const HeroContent = () => {
     const [hoveredLink, setHoveredLink] = useState(null);
 
     useEffect(() => {
-        const checkMobile = () => setIsMobile(window.innerWidth < 768);
+        const checkMobile = () => {
+            const mobile = window.innerWidth < 768;
+            setIsMobile(mobile);
+            console.log('🔧 HeroContent: Mobile mode =', mobile, '| Width =', window.innerWidth);
+        };
         checkMobile();
         window.addEventListener('resize', checkMobile);
         return () => window.removeEventListener('resize', checkMobile);
@@ -221,7 +225,11 @@ const HeroContent = () => {
                         <img
                             src={HeroImage}
                             alt="Hero Sculpture"
-                            className="h-full w-auto object-contain mix-blend-multiply contrast-110"
+                            className="h-full w-auto object-contain"
+                            style={{
+                                filter: 'brightness(1.05) contrast(1.1) saturate(0.95)',
+                                WebkitFilter: 'brightness(1.05) contrast(1.1) saturate(0.95)'
+                            }}
                         />
                     </motion.div>
 
@@ -277,7 +285,7 @@ const HeroContent = () => {
                         initial={{ opacity: 0, y: 50 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 2.0, duration: 1.6 }} // Doubled
-                        className="absolute bottom-20 w-full px-8 flex flex-col items-center space-y-4 z-30 bg-white/90 backdrop-blur-md py-8 rounded-t-3xl border-t border-gray-200">
+                        className="absolute bottom-12 w-full px-3 flex flex-col items-stretch space-y-0 z-30 bg-white/95 backdrop-blur-lg py-4 rounded-t-3xl border-t border-gray-200 shadow-lg">
                         {navItems.map((item) => (
                             <NavLabel
                                 key={item.id}

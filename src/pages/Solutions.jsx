@@ -49,15 +49,15 @@ const SystemLevelRow = ({ level, index }) => {
                 {/* 2. SPECIFICATION (Center) */}
                 <div className="flex-1 space-y-6">
                     {/* Muted Level Tag */}
-                    <div className="inline-block px-2 py-1 bg-geron-grey-light/50 border border-geron-grey-dark/20 text-geron-grey-dark/70 font-mono text-xs tracking-wider">
+                    <div className="inline-block px-2 py-1 bg-geron-grey-light/50 border border-geron-grey-dark/20 text-geron-grey-dark/70 font-mono text-[10px] md:text-xs tracking-wider">
                         [{level.tag}]
                     </div>
 
                     <div>
-                        <h2 className="text-3xl lg:text-4xl font-bold text-geron-grey-dark uppercase leading-none tracking-tight mb-3">
+                        <h2 className="text-xl md:text-3xl lg:text-4xl font-bold text-geron-grey-dark uppercase leading-none tracking-tight mb-3">
                             {level.title}
                         </h2>
-                        <p className="text-geron-grey-dark/80 text-lg leading-relaxed max-w-xl font-light">
+                        <p className="text-geron-grey-dark/80 text-sm md:text-lg leading-relaxed max-w-xl font-light">
                             {level.bait}
                         </p>
                     </div>
@@ -66,7 +66,7 @@ const SystemLevelRow = ({ level, index }) => {
                         <h4 className="font-mono text-[10px] text-geron-grey-dark/40 mb-3 uppercase tracking-widest">System Modules:</h4>
                         <ul className="space-y-2">
                             {level.specs.map((spec, i) => (
-                                <li key={i} className="font-mono text-xs lg:text-sm text-geron-grey-dark flex items-start gap-3">
+                                <li key={i} className="font-mono text-[11px] md:text-xs lg:text-sm text-geron-grey-dark flex items-start gap-3">
                                     <span className="text-geron-cyan shrink-0 text-[10px] mt-1">●</span>
                                     <span>
                                         <span className="font-bold text-geron-grey-dark/90">{spec.label}:</span> <span className="text-geron-grey-dark/70">{spec.desc}</span>
@@ -85,11 +85,11 @@ const SystemLevelRow = ({ level, index }) => {
                             Bill of Materials
                         </div>
 
-                        <div className="flex justify-between items-end mb-2 font-mono text-sm border-b border-dashed border-geron-grey-dark/10 pb-1">
+                        <div className="flex justify-between items-end mb-2 font-mono text-xs md:text-sm border-b border-dashed border-geron-grey-dark/10 pb-1">
                             <span className="text-geron-grey-dark/50">DEV COST:</span>
                             <span className="font-bold text-geron-grey-dark">{level.costs.dev}</span>
                         </div>
-                        <div className="flex justify-between items-end mb-4 font-mono text-sm border-b border-dashed border-geron-grey-dark/10 pb-1">
+                        <div className="flex justify-between items-end mb-4 font-mono text-xs md:text-sm border-b border-dashed border-geron-grey-dark/10 pb-1">
                             <span className="text-geron-grey-dark/50">OPS/MO:</span>
                             <span className="font-bold text-geron-grey-dark">{level.costs.ops}</span>
                         </div>
@@ -177,10 +177,10 @@ const Solutions = () => {
                         <Link to="/" className="inline-flex items-center gap-2 text-geron-grey-dark hover:text-geron-cyan transition-colors font-mono text-xs uppercase tracking-widest mb-4">
                             <ArrowLeft size={14} /> // Return_to_Base
                         </Link>
-                        <h1 className="text-4xl md:text-5xl font-bold tracking-tighter text-geron-grey-dark">
+                        <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold tracking-tighter text-geron-grey-dark">
                             АРХИТЕКТУРА СИСТЕМЫ
                         </h1>
-                        <p className="font-mono text-xs text-geron-grey-mid mt-2 max-w-xl uppercase tracking-wider">
+                        <p className="font-mono text-[10px] md:text-xs text-geron-grey-mid mt-2 max-w-xl uppercase tracking-wider">
                             ВЫБЕРИТЕ УРОВЕНЬ АВТОМАТИЗАЦИИ.<br />
                             ПРОЗРАЧНЫЕ ЦЕНЫ. ИНЖЕНЕРНАЯ ТОЧНОСТЬ.
                         </p>
@@ -214,8 +214,8 @@ const Solutions = () => {
                                     <div className="inline-block border border-geron-grey-dark/30 px-3 py-1 text-[10px] font-mono text-geron-grey-dark/60 mb-4 uppercase bg-white/50">
                                         Economic Efficiency Report
                                     </div>
-                                    <h3 className="text-2xl font-bold mb-4 font-mono text-geron-grey-dark">ROI CALCULATION PROTOCOL</h3>
-                                    <p className="text-geron-grey-dark/70 mb-8 font-light max-w-md">
+                                    <h3 className="text-xl md:text-2xl font-bold mb-4 font-mono text-geron-grey-dark">ROI CALCULATION PROTOCOL</h3>
+                                    <p className="text-geron-grey-dark/70 mb-8 font-light max-w-md text-sm md:text-base">
                                         В чем выгода цифрового сотрудника? Сравните ежемесячные расходы на менеджера и эффективность автономной системы.
                                     </p>
 

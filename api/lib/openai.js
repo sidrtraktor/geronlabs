@@ -6,12 +6,22 @@ const openai = new OpenAI({
 
 const ASSISTANT_ID = 'asst_P4mHBxXIQwbZik526dS7gire';
 
-export async function getOpenAIResponse(threadId, userMessage, onToolCall) {
+// In-memory хранилище threadId по userId
+const userThreads = new Map();
+
+export async function getOpenAIResponse(userId, userMessage, onToolCall) {
     try {
-        // 1. Create a Thread
-        // Note: For MVP stateless, we create a new thread for each message.
-        const thread = await openai.beta.threads.create();
-        const currentThreadId = thread.id;
+        // 1. Получить или создать Thread для пользователя
+        let currentThreadId = userThreads.get(userId);
+
+        if (!currentThreadId) {
+            const thread = await openai.beta.threads.create();
+            currentThreadId = thread.id;
+            userThreads.set(userId, currentThreadId);
+            console.log(`✨ Создан новый thread для user ${userId}: ${currentThreadId}`);
+        } else {
+            console.log(`♻️ Использую существующий thread: ${currentThreadId}`);
+        }
 
         // 2. Add Message
         await openai.beta.threads.messages.create(currentThreadId, {
@@ -65,6 +75,6 @@ export async function getOpenAIResponse(threadId, userMessage, onToolCall) {
 
     } catch (error) {
         console.error('OpenAI Error:', error);
-        return { text: "Ошибка связи с нейроцентром.", threadId: threadId };
+        return { text: "Ошибка связи с нейроцентром.", threadId: null };
     }
 }
